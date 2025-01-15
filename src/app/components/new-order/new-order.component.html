@@ -1,0 +1,77 @@
+<div class="container">
+  <mat-card class="site-selector-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Site Selection</mat-card-title>
+      <mat-card-subtitle>Choose the site you want to order from</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="site-select" appearance="fill">
+        <mat-label>Select Site</mat-label>
+        <mat-select [(ngModel)]="selectedSiteId" (selectionChange)="onSiteSelect()">
+          @for (site of sites; track site.id) {
+            <mat-option [value]="site.id">
+              {{site.name}}
+              @if (site.address) {
+                <small class="location-text"> - {{site.address}}</small>
+              }
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  
+  </mat-card>
+    
+    <div class="products-section" >
+      <mat-card class="products-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Available Products</mat-card-title>
+          <mat-card-subtitle>
+            Select the desired quantity for each product
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="product-list">
+              <div *ngFor="let product of products"  class="product-item" >
+                <div class="product-info">
+                  <mat-icon>{{ 'category'}}</mat-icon>
+                  <span class="product-name">{{product.name }} - {{product.price}} NIS</span>
+                </div>
+                <div class="counter-controls">
+                  <button mat-mini-fab color="primary" 
+                          (click)="decrementCounter(product)" 
+                          [disabled]="product.counter === 0">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span class="counter-value" [class.has-items]="product.counter > 0">
+                    {{product.counter}}
+                  </span>
+                  <button mat-mini-fab color="primary" 
+                          (click)="incrementCounter(product)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <mat-divider ></mat-divider>
+           <div class="total-price"> Total Price -{{totalOrderPrice}} NIS</div> 
+           <mat-divider ></mat-divider>
+
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button mat-raised-button
+                  color="primary"
+                  [disabled]="!hasProductsSelected()"
+                  (click)="submitOrder()"
+                  class="order-button">
+            <mat-icon>shopping_cart</mat-icon>
+            Place Order
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  
+</div>
+  

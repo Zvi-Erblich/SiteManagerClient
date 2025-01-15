@@ -1,0 +1,40 @@
+<div class="dashboard-container">
+  <mat-toolbar color="primary" class="dashboard-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="home"
+      ></mat-icon>
+    </button>
+    <span>Site Manager</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/sites" routerLinkActive="active">
+          <mat-icon matListItemIcon>factory</mat-icon>
+          Sites
+        </a>
+        <a mat-list-item routerLink="/add-supply" routerLinkActive="active">
+          <mat-icon matListItemIcon>add</mat-icon>
+          New Order
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content">
+      <div class="dashboard-stats">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

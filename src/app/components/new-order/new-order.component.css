@@ -1,0 +1,177 @@
+.add-supply-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 0;
+    color: #2c3e50;
+  }
+
+  .subtitle {
+    color: #666;
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+  }
+}
+
+.form-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+
+.form-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-section {
+  .section-title {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin: 0 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.site-option {
+  display: flex;
+  flex-direction: column;
+
+  .site-name {
+    font-weight: 500;
+  }
+
+  .site-location {
+    color: #666;
+    font-size: 0.875rem;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+
+    mat-icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.site-selector-card {
+  margin-bottom: 20px;
+}
+
+.site-select {
+  width: 100%;
+}
+
+.location-text {
+  color: #666;
+  margin-left: 8px;
+}
+
+.products-card {
+  background-color: #fff;
+}
+
+.product-list {
+  margin: 16px 0;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.product-item:hover {
+  background-color: #f5f5f5;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-name {
+  font-size: 16px;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.counter-value {
+  min-width: 32px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.counter-value.has-items {
+  color: #1976d2;
+}
+
+.order-button {
+  margin: 16px;
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+.total-price{
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+}
