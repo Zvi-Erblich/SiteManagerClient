@@ -11,14 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SiteService } from '../../services/site.service';
 import { Site } from '../../models/site';
 
-interface ConstructionSite {
-  id: number;
-  name: string;
-  location: string;
-  progress: number;
-  supplies: number;
-}
-
 @Component({
   standalone: true,
   imports: [
@@ -45,7 +37,7 @@ export class SitesComponent implements OnInit {
   sites: Site[] = [];
 
   ngOnInit(): void {
-this.loadSites();
+  this.loadSites();
   }
 
   loadSites(){

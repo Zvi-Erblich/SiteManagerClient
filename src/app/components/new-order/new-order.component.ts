@@ -41,15 +41,15 @@ import { OrderService } from '../../services/order.service';
 })
 export class NewOrderComponent {
   private snackBar = inject(MatSnackBar);
- 
-  constructor( private siteService: SiteService,private productService: ProductService,private orderService: OrderService) {
-  
-    
-  }
   sites: Site[] = [];
-
   products: Product[] = [];
- 
+  selectedSiteId: number | null = null;
+  totalOrderPrice: number = 0;
+
+
+  constructor( private siteService: SiteService,private productService: ProductService,private orderService: OrderService) {
+  }
+
    ngOnInit(): void {
         this.loadSites();
         this.loadProducts();
@@ -72,31 +72,21 @@ export class NewOrderComponent {
     })
    }
 
-
-
-  selectedSiteId: number | null = null;
-  productCounters: Record<number, number> = Object.fromEntries(
-    this.products.map(product => [product.id, 0])
-  );
-
   onSiteSelect(): void {
     this.products.forEach(product => {
       product.counter = 0;
     });
   }
 
-totalOrderPrice: number = 0;
 
 incrementCounter(product: Product): void {
     product.counter++;
-    this.productCounters[product.id] = product.counter;
     this.calculateTotalPrice();
 }
 
 decrementCounter(product: Product): void {
     if (product.counter > 0) {
         product.counter--;
-        this.productCounters[product.id] = product.counter;
         this.calculateTotalPrice();
     }
 }
@@ -107,19 +97,10 @@ calculateTotalPrice(): void {
         .reduce((total, product) => total + (product.price * product.counter), 0);
 }
   hasProductsSelected(): boolean {
-    return this.products.some(product => product.counter > 0);
+    return (this.products.some(product => product.counter > 0)&&this.selectedSiteId!=null);
   }
 
   submitOrder(): void {
-    if (!this.selectedSiteId) {
-      this.snackBar.open('Site is not selected!', 'Close', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      return;
-    }
-
     const order = {
       siteId: this.selectedSiteId,
       totalPrice: this.totalOrderPrice
@@ -130,7 +111,7 @@ calculateTotalPrice(): void {
         this.snackBar.open('Order sent successfully! 🎉', 'Close', {
           duration: 3000,
           horizontalPosition: 'center',
-          verticalPosition: 'bottom'
+          verticalPosition: 'top'
         });
         this.onSiteSelect();
       },
@@ -138,7 +119,7 @@ calculateTotalPrice(): void {
         this.snackBar.open('Error occurred while sending the order', 'Close', {
           duration: 3000,
           horizontalPosition: 'center',
-          verticalPosition: 'bottom'
+          verticalPosition: 'top'
         });
       }
     });

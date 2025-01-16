@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -17,7 +16,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from '../../app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -26,7 +24,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   imports: [
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
@@ -61,10 +58,10 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe({
         next: () => this.router.navigate(['/sites']),
         error: (error: any) => {console.error('Login failed:', error)
-          this.snackBar.open('Error occurred while log in', 'Close', {
+          this.snackBar.open('Error occurred while logged in', 'Close', {
             duration: 3000,
             horizontalPosition: 'center',
-            verticalPosition: 'bottom'
+            verticalPosition: 'top'
           });
         },
       });

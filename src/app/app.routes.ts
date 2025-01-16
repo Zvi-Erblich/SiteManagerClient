@@ -18,7 +18,7 @@ export const routes: Routes = [
       component: SitesComponent,
     },
     {
-      path: 'add-supply',
+      path: 'new-order',
       component: NewOrderComponent,
     }]
   }
