@@ -13,16 +13,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AppRoutingModule } from '../../app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    AppRoutingModule,
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
