@@ -11,14 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
-interface ConstructionSite {
-  id: number;
-  name: string;
-  location: string;
-  progress: number;
-  supplies: number;
-}
-
 @Component({
   standalone: true,
   imports: [
@@ -37,10 +29,8 @@ interface ConstructionSite {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent{
   constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {}
 
   logout(): void {
     this.authService.logout();
